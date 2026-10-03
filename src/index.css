@@ -158,7 +158,22 @@
 .animate-cute-bounce {
   animation: cute-bounce 2.6s ease-in-out infinite;
 }
-
-.animate-cute-wiggle {
-  animation: cute-wiggle 3s ease-in-out infinite;
+/* FIX FLUIDEZ ANDROID - VERSIÓN CORRECTA PARA TU APP */
+@media (max-width: 768px) {
+  .glass-card, .glass-card-subtle {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(30, 30, 38, 0.94) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+    transform: translateZ(0);
+  }
+  /* por si usas clases de tailwind en algún lado */
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* quita las animaciones que también traban */
+  .animate-float, .animate-cute-bounce {
+    animation: none !important;
+  }
 }
